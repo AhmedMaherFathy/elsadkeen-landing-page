@@ -32,7 +32,7 @@
       position: fixed;
       bottom: 20px;
       left: 20px;
-      background-color: #25D366;
+      /* background-color: #25D366; */
       color: white;
       border-radius: 50%;
       width: 60px;
@@ -53,56 +53,115 @@
 </head>
 <body class="bg-[#FCFAF6] text-[#2E2E2E]">
 
-  <!-- Header -->
-  <header class="flex justify-between items-center p-4 shadow-md sticky top-0 bg-white z-50 animate-slideDown">
-    <div class="flex items-center gap-2">
-      <img src="logo.png" alt="شعار" class="h-10 animate-zoomIn">
-    </div>
-    <nav class="hidden md:flex gap-6 animate-fadeIn delay-200">
-      <a href="#" class="hover:text-[#D4AF37]">الرئيسية</a>
-      <a href="#features" class="hover:text-[#D4AF37]">المميزات</a>
-      <a href="#privacy" class="hover:text-[#D4AF37]">سياسة الخصوصية</a>
-      <a href="#faq" class="hover:text-[#D4AF37]">الأسئلة الشائعة</a>
-      <a href="#contact" class="hover:text-[#D4AF37]">تواصل معنا</a>
-    </nav>
-    <div></div>
-  </header>
+<!-- Header -->
+<header class="grid grid-cols-3 items-center px-4 py-3 shadow-md sticky top-0 bg-white z-50 animate-slideDown">
+  <!-- أيقونة الهامبورجر على الشمال -->
+  <div class="flex justify-start md:hidden col-start-1">
+    <button id="menu-toggle" class="focus:outline-none">
+      <svg class="w-8 h-8 text-[#2E2E2E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
 
-  <!-- Hero -->
-  <section class="text-center py-16 bg-gradient-to-r from-[#FCFAF6] to-[#fdf6e3] animate-fadeIn">
-    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-[#D4AF37] animate-slideDown">💍 تطبيق الصادقين والصادقات</h2>
-    <p class="mb-6 text-md animate-slideUp delay-200">للباحثين عن الزواج الإسلامي الشرعي<br>سجّل مجاناً وابدأ رحلتك لبناء أسرة مستقرة وآمنة</p>
-    <div class="flex justify-center gap-6 mt-8 animate-zoomIn delay-300">
-      <img src="home-left.png" alt="موكاب شاشة 1" class="h-80 rounded-xl ">
-      <img src="details-left.png" alt="موكاب شاشة 2" class="h-80 rounded-xl ">
+  <!-- القائمة في الديسكتوب (في النص بالظبط) -->
+  <nav class="hidden md:flex justify-center gap-8 items-center animate-fadeIn delay-200 col-start-2">
+    <a href="#" class="hover:text-[#D4AF37]">الرئيسية</a>
+    <a href="#features" class="hover:text-[#D4AF37]">المميزات</a>
+    <a href="#privacy" class="hover:text-[#D4AF37]">سياسة الخصوصية</a>
+    <a href="#faq" class="hover:text-[#D4AF37]">الأسئلة الشائعة</a>
+    <a href="#contact" class="hover:text-[#D4AF37]">تواصل معنا</a>
+  </nav>
+
+  <!-- Logo (يمين) -->
+  <div class="flex justify-end items-center gap-2 col-start-3">
+    <img src="logo.png" alt="شعار" class="h-10 animate-zoomIn">
+  </div>
+</header>
+
+<!-- القائمة المنسدلة للموبايل كـ Overlay -->
+<div id="nav-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col items-center justify-center text-lg">
+  <a href="#" class="px-4 py-2 hover:text-[#D4AF37]">الرئيسية</a>
+  <a href="#features" class="px-4 py-2 hover:text-[#D4AF37]">المميزات</a>
+  <a href="#privacy" class="px-4 py-2 hover:text-[#D4AF37]">سياسة الخصوصية</a>
+  <a href="#faq" class="px-4 py-2 hover:text-[#D4AF37]">الأسئلة الشائعة</a>
+  <a href="#contact" class="px-4 py-2 hover:text-[#D4AF37]">تواصل معنا</a>
+</div>
+
+<!-- finish header -->
+
+ <!-- Hero Section -->
+<section class="relative w-full overflow-hidden h-[60vh] sm:h-[calc(100vh-64px)]">
+  <!-- Carousel Wrapper -->
+  <div class="absolute inset-0" id="carousel">
+    
+    <!-- Slide 1 -->
+    <img src="banner3.png" 
+         alt="بانر 1" 
+         class="carousel-slide absolute inset-0 w-full h-full object-cover object-[center_top] opacity-0 transition-opacity duration-1000 ease-in-out">
+
+    <!-- Slide 2 -->
+    <img src="banner4.png" 
+         alt="بانر 2" 
+         class="carousel-slide absolute inset-0 w-full h-full object-cover object-[center] opacity-0 transition-opacity duration-1000 ease-in-out">
+
+    <!-- Slide 3 -->
+    <img src="banner5.png" 
+         alt="بانر 3" 
+         class="carousel-slide absolute inset-0 w-full h-full object-cover object-[center_bottom] opacity-0 transition-opacity duration-1000 ease-in-out">
+
+  </div>
+
+  <!-- Overlay & Content -->
+  <div class="relative z-10 flex flex-col md:flex-row-reverse justify-center items-center h-full px-4 md:px-12 bg-black/40">
+    <div class="w-full md:w-1/2 text-center md:text-right animate-slideRight text-white">
+      <h1 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-4">💍 مرحباً بك في الصادقين والصادقات</h1>
+      <p class="text-sm sm:text-lg md:text-xl font-normal max-w-xl mx-auto md:mx-0">
+        للباحثين عن الزواج الإسلامي الشرعي. سجل مجانًا وابدأ رحلتك لبناء أسرة مستقرة وآمنة.
+      </p>
     </div>
-    <div class="flex justify-center gap-4 my-6 animate-slideUp delay-400">
+  </div>
+</section>
+
+
+  <!-- App Section -->
+  <section class="text-center py-16 bg-gradient-to-r from-[#FCFAF6] to-[#fdf6e3] animate-fadeIn px-4 md:px-0">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-[#D4AF37] animate-slideDown">💍 تطبيق الصادقين والصادقات</h2>
+    <p class="mb-6 text-sm sm:text-md md:text-lg animate-slideUp delay-200">
+      للباحثين عن الزواج الإسلامي الشرعي<br>سجّل مجاناً وابدأ رحلتك لبناء أسرة مستقرة وآمنة
+    </p>
+    <div class="flex flex-wrap justify-center gap-6 mt-8 animate-zoomIn delay-300">
+      <img src="home-left.png" alt="موكاب شاشة 1" class="h-64 sm:h-72 md:h-80 rounded-xl">
+      <img src="details-left.png" alt="موكاب شاشة 2" class="h-64 sm:h-72 md:h-80 rounded-xl">
+    </div>
+    <div class="flex flex-wrap justify-center gap-4 my-6 animate-slideUp delay-400">
       <a target="_blank" href="https://play.google.com/store/apps/details?id=your.app.id">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" class="h-12">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" class="h-10 sm:h-12">
       </a>
       <a target="_blank" href="https://apps.apple.com/app/your-app-id">
-        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" class="h-12">
+        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" class="h-10 sm:h-12">
       </a>
     </div>
   </section>
 
-  <!-- Features -->
-  <section id="features" class="py-16 px-6">
-    <h3 class="text-2xl font-bold text-center text-[#D4AF37] mb-10 animate-slideUp">✨ مميزات التطبيق</h3>
-    <div class="grid md:grid-cols-3 gap-8 text-center">
-      <div class="p-6 bg-white rounded-xl shadow animate-fadeIn delay-100">✅ التسجيل مجاني تماماً</div>
-      <div class="p-6 bg-white rounded-xl shadow animate-fadeIn delay-200">🔐 خصوصية وأمان عالي</div>
-      <div class="p-6 bg-white rounded-xl shadow animate-fadeIn delay-300">🛡️ حسابات موثقة</div>
-      <div class="p-6 bg-white rounded-xl shadow animate-fadeIn delay-400">📄 فلاتر بحث دقيقة</div>
-      <div class="p-6 bg-white rounded-xl shadow animate-fadeIn delay-500">💬 تواصل شرعي ومحترم</div>
-      <div class="p-6 bg-white rounded-xl shadow animate-fadeIn delay-500">🕊️ بيئة نظيفة خالية من العبث</div>
+  <!-- Features Section -->
+  <section id="features" class="py-16 px-4 md:px-6">
+    <h3 class="text-xl sm:text-2xl font-bold text-center text-[#D4AF37] mb-10 animate-slideUp">✨ مميزات التطبيق</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 text-center">
+      <div class="p-4 sm:p-6 bg-white rounded-xl shadow animate-fadeIn delay-100">✅ التسجيل مجاني تماماً</div>
+      <div class="p-4 sm:p-6 bg-white rounded-xl shadow animate-fadeIn delay-200">🔐 خصوصية وأمان عالي</div>
+      <div class="p-4 sm:p-6 bg-white rounded-xl shadow animate-fadeIn delay-300">🛡️ حسابات موثقة</div>
+      <div class="p-4 sm:p-6 bg-white rounded-xl shadow animate-fadeIn delay-400">📄 فلاتر بحث دقيقة</div>
+      <div class="p-4 sm:p-6 bg-white rounded-xl shadow animate-fadeIn delay-500">💬 تواصل شرعي ومحترم</div>
+      <div class="p-4 sm:p-6 bg-white rounded-xl shadow animate-fadeIn delay-500">🕊️ بيئة نظيفة خالية من العبث</div>
     </div>
   </section>
 
   <!-- How it works -->
-  <section id="how" class="bg-[#f8f4ea] py-16 px-6">
-    <h3 class="text-2xl font-bold text-center text-[#D4AF37] mb-10 animate-slideUp">🧭 كيف يعمل التطبيق؟</h3>
-    <ol class="space-y-3 max-w-2xl mx-auto text-lg">
+  <section id="how" class="bg-[#f8f4ea] py-16 px-4 md:px-6">
+    <h3 class="text-2xl sm:text-3xl font-bold text-center text-[#D4AF37] mb-10 animate-slideUp">🧭 كيف يعمل التطبيق؟</h3>
+    <ol class="space-y-3 max-w-2xl mx-auto text-sm sm:text-base md:text-lg">
       <li class="animate-slideRight delay-100">1️⃣ حمّل التطبيق وسجّل مجاناً.</li>
       <li class="animate-slideRight delay-200">2️⃣ أنشئ ملفك الشخصي بالكامل.</li>
       <li class="animate-slideRight delay-300">3️⃣ استعرض الملفات وابحث عن شريك حياتك.</li>
@@ -112,10 +171,10 @@
     </ol>
   </section>
 
-  <!-- Privacy Policy -->
-  <section id="privacy" class="py-16 px-6 bg-white animate-fadeIn">
-    <h3 class="text-2xl font-bold text-center text-[#D4AF37] mb-10">🔒 سياسة الخصوصية والاسترجاع</h3>
-    <div class="max-w-4xl mx-auto space-y-6 text-lg leading-relaxed text-[#2E2E2E]">
+  <!-- Privacy Section -->
+  <section id="privacy" class="py-16 px-4 md:px-6 bg-white animate-fadeIn">
+    <h3 class="text-2xl sm:text-3xl font-bold text-center text-[#D4AF37] mb-10">🔒 سياسة الخصوصية والاسترجاع</h3>
+    <div class="max-w-4xl mx-auto space-y-6 text-sm sm:text-base md:text-lg leading-relaxed text-[#2E2E2E]">
       <div>
         <h4 class="font-bold mb-2">أولاً: الخصوصية</h4>
         <ul class="list-disc pr-6 space-y-2">
@@ -132,74 +191,59 @@
           <li>بمجرد فتح الخدمات للمشترك فإنه يُعتبر قد استفاد من الخدمة، وبالتالي لا يحق المطالبة بإلغاء أو استرجاع الرسوم.</li>
         </ul>
       </div>
-
-  <div class="max-w-4xl mx-auto space-y-6 text-gray-700 leading-relaxed">
-
-    <p>
-      نحن نلتزم بحماية بياناتك الشخصية، ويشمل ذلك الحفاظ على سرية المعلومات وعدم مشاركتها مع أي طرف ثالث إلا وفق القوانين والسياسات المتبعة.
-    </p>
-
-    <!-- ✅ إضافة ضوابط الاستخدام -->
-    <h4 class="text-xl font-bold text-[#2E2E2E] mt-10">ثالثاً: ضوابط الاستخدام</h4>
-    <ul class="list-decimal list-inside space-y-3 mt-4">
-      <li>
-        يلتزم المشترك باستخدام التطبيق لغرضه السامي فقط وهو الزواج الإسلامي الشرعي.
-      </li>
-      <li>
-        أي استخدام مخالف (مثل العبث، الإساءة، أو أغراض غير شرعية او أعلانات تسويقية ) يؤدي إلى إلغاء الاشتراك مباشرةً دون استرداد الرسوم.
-      </li>
-      <li>
-        يحتفظ التطبيق بالحق في إيقاف أو إلغاء أي حساب يخالف هذه الضوابط، حفاظاً على القيم الإسلامية والهدف الشرعي للتطبيق.
-      </li>
-    </ul>
-
-  </div>
+      <h4 class="text-xl font-bold text-[#2E2E2E] mt-10">ثالثاً: ضوابط الاستخدام</h4>
+      <ul class="list-decimal list-inside space-y-3 mt-4">
+        <li>يلتزم المشترك باستخدام التطبيق لغرضه السامي فقط وهو الزواج الإسلامي الشرعي.</li>
+        <li>أي استخدام مخالف (مثل العبث، الإساءة، أو أغراض غير شرعية او أعلانات تسويقية ) يؤدي إلى إلغاء الاشتراك مباشرةً دون استرداد الرسوم.</li>
+        <li>يحتفظ التطبيق بالحق في إيقاف أو إلغاء أي حساب يخالف هذه الضوابط، حفاظاً على القيم الإسلامية والهدف الشرعي للتطبيق.</li>
+      </ul>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section id="faq" class="bg-[#f8f4ea] py-16 px-6 animate-fadeIn">
-    <h3 class="text-2xl font-bold text-center text-[#D4AF37] mb-10">❓ الأسئلة الشائعة</h3>
+  <!-- FAQ Section -->
+  <section id="faq" class="bg-[#f8f4ea] py-16 px-4 md:px-6 animate-fadeIn">
+    <h3 class="text-2xl sm:text-3xl font-bold text-center text-[#D4AF37] mb-10">❓ الأسئلة الشائعة</h3>
     <div class="max-w-3xl mx-auto space-y-4">
       <details class="p-4 bg-white rounded shadow group animate-slideUp delay-100">
-        <summary class="font-semibold cursor-pointer text-lg text-[#2E2E2E] flex items-center justify-between">
+        <summary class="font-semibold cursor-pointer text-lg sm:text-xl text-[#2E2E2E] flex items-center justify-between">
           <span>هل التسجيل مجاني؟</span>
           <span class="transition-transform group-open:rotate-180">🔽</span>
         </summary>
-        <p class="mt-2 text-gray-600 leading-relaxed">نعم، التسجيل مجاني، ويمكنك تصفح الملفات مباشرة. يوجد باقات اختيارية لاحقًا.</p>
+        <p class="mt-2 text-gray-600 leading-relaxed text-sm sm:text-base">نعم، التسجيل مجاني، ويمكنك تصفح الملفات مباشرة. يوجد باقات اختيارية لاحقًا.</p>
       </details>
       <details class="p-4 bg-white rounded shadow group animate-slideUp delay-200">
-        <summary class="font-semibold cursor-pointer text-lg text-[#2E2E2E] flex items-center justify-between">
+        <summary class="font-semibold cursor-pointer text-lg sm:text-xl text-[#2E2E2E] flex items-center justify-between">
           <span>كيف أضمن أن الحسابات موثوقة؟</span>
           <span class="transition-transform group-open:rotate-180">🔽</span>
         </summary>
-        <p class="mt-2 text-gray-600 leading-relaxed">جميع الحسابات تمر بمراجعة إدارية كاملة.</p>
+        <p class="mt-2 text-gray-600 leading-relaxed text-sm sm:text-base">جميع الحسابات تمر بمراجعة إدارية كاملة.</p>
       </details>
       <details class="p-4 bg-white rounded shadow group animate-slideUp delay-300">
-        <summary class="font-semibold cursor-pointer text-lg text-[#2E2E2E] flex items-center justify-between">
+        <summary class="font-semibold cursor-pointer text-lg sm:text-xl text-[#2E2E2E] flex items-center justify-between">
           <span>هل هناك رقابة على المحادثات؟</span>
           <span class="transition-transform group-open:rotate-180">🔽</span>
         </summary>
-        <p class="mt-2 text-gray-600 leading-relaxed">نعم، يمكن مراجعة المحادثات في حال التبليغ لضمان بيئة محترمة.</p>
+        <p class="mt-2 text-gray-600 leading-relaxed text-sm sm:text-base">نعم، يمكن مراجعة المحادثات في حال التبليغ لضمان بيئة محترمة.</p>
       </details>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="py-16 px-6 text-center animate-fadeIn delay-200">
-    <h3 class="text-2xl font-bold text-[#D4AF37] mb-6">📞 تواصل معنا</h3>
+  <!-- Contact Section -->
+  <section id="contact" class="py-16 px-4 md:px-6 text-center animate-fadeIn delay-200">
+    <h3 class="text-2xl sm:text-3xl font-bold text-[#D4AF37] mb-6 flex justify-center items-center gap-2">
+      <img src="01.png" alt="تواصل" class="w-8 h-8"> 
+      تواصل معنا
+    </h3>
     <p class="mb-4">📧 <a href="mailto:sadiqeen1@hotmail.com" class="text-[#A67C52] underline">البريد الرسمي: sadiqeen1@hotmail.com</a></p>
     <p class="mb-4">📧 <a href="mailto:alsaadiqin@hotmail.com" class="text-[#A67C52] underline">الدعم الفني: alsaadiqin@hotmail.com</a></p>
   </section>
 
-  <!-- WhatsApp Floating Button -->
+  <!-- whatsapp -->
   <a href="https://wa.me/+9660573743330" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="white" class="w-8 h-8">
-      <path d="M16 .4C7.2.4.1 7.5.1 16.3c0 2.9.8 5.7 2.3 8.2L.1 32l7.8-2.2c2.4 1.3 5.2 2 8.1 2 8.8 0 15.9-7.1 15.9-15.9S24.8.4 16 .4zm0 28.9c-2.6 0-5.2-.7-7.4-2l-.5-.3-4.6 1.3 1.3-4.5-.3-.5c-1.5-2.3-2.3-4.9-2.3-7.6 0-7.5 6.1-13.6 13.6-13.6s13.6 6.1 13.6 13.6-6.1 13.6-13.6 13.6zm7.4-10.2c-.4-.2-2.6-1.3-3-1.4-.4-.1-.7-.2-1 .2-.3.4-1.2 1.4-1.5 1.7-.3.3-.6.3-1 .1-.4-.2-1.7-.6-3.2-1.9-1.2-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8.2-.2.4-.6.6-.8.2-.3.3-.5.5-.8.2-.3.1-.6 0-.8-.1-.2-1-2.4-1.4-3.3-.4-.9-.7-.8-1-.8h-.9c-.3 0-.8.1-1.2.6-.4.4-1.6 1.5-1.6 3.7s1.6 4.3 1.9 4.6c.2.3 3.1 4.8 7.6 6.7 1.1.5 1.9.8 2.6 1.1 1.1.3 2.1.3 2.9.2.9-.1 2.6-1.1 3-2.1.4-1 .4-1.8.3-2-.1-.2-.4-.3-.8-.5z"/>
-    </svg>
+    <img src="02.png" alt="WhatsApp" class="w-12 h-12">
   </a>
 
-  <!-- Footer -->
+  
   <footer class="bg-[#2E2E2E] text-white py-6 text-center animate-fadeIn delay-400">
     <div class="flex justify-center gap-6 mb-3">
       <a href="#privacy">سياسة الخصوصية</a>
@@ -208,5 +252,82 @@
     <p>© 2025 Sadiqeen.com – جميع الحقوق محفوظة</p>
   </footer>
 
+  <!-- Carousel Script -->
+<script>
+  const slides = document.querySelectorAll(".carousel-slide");
+  let currentSlide = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.style.opacity = (i === index) ? "1" : "0";
+    });
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  // Start carousel
+  showSlide(currentSlide);
+  setInterval(nextSlide, 4000); // كل 4 ثواني يبدل صورة
+
+  const menuToggle = document.getElementById("menu-toggle");
+  const navMenu = document.getElementById("nav-menu");
+  const navLinks = navMenu.querySelectorAll("a");
+
+  // فتح/غلق القائمة
+  menuToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("hidden");
+  });
+
+  // إغلاق القائمة عند الضغط على أي لينك
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      navMenu.classList.add("hidden");
+    });
+  });
+</script>
+
+  <!-- <script>
+
+    const slides = document.querySelectorAll('#hero-carousel .carousel-slide');
+  let currentSlide = 0;
+
+  // إظهار أول صورة
+  slides[currentSlide].classList.add('opacity-100');
+
+  setInterval(() => {
+    // اخفاء الصورة الحالية
+    slides[currentSlide].classList.remove('opacity-100');
+    slides[currentSlide].classList.add('opacity-0');
+
+    // تحديد الصورة التالية
+    currentSlide = (currentSlide + 1) % slides.length;
+
+    // إظهار الصورة الجديدة
+    slides[currentSlide].classList.remove('opacity-0');
+    slides[currentSlide].classList.add('opacity-100');
+  }, 5000); // كل 5 ثواني
+    // Simple carousel
+    const images = document.querySelectorAll('.carousel-img');
+    let current = 0;
+    images[current].style.opacity = 1;
+
+    setInterval(() => {
+      images[current].style.opacity = 0;
+      current = (current + 1) % images.length;
+      images[current].style.opacity = 1;
+    }, 4000);
+
+      const menuToggle = document.getElementById('menu-toggle');
+  const navMenu = document.getElementById('nav-menu');
+
+  menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('hidden'); // إظهار أو إخفاء القائمة
+  });
+  </script> -->
+
 </body>
 </html>
+
