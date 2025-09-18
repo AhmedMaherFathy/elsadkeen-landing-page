@@ -95,7 +95,7 @@
   <!-- Desktop carousel (absolute, visible >= sm) -->
   <div id="carousel-desktop" class="hidden sm:block absolute inset-0">
     <img src="banner3.png" alt="بانر 1"
-         class="carousel-slide-desktop absolute inset-0 w-full h-full object-cover object-[center_top] opacity-0 transition-opacity duration-1000 ease-in-out">
+         class="carousel-slide-desktop absolute inset-0 w-full h-auto object-contain bg-black object-[center_top] opacity-0 transition-opacity duration-1000 ease-in-out">
     <img src="banner4.png" alt="بانر 2"
          class="carousel-slide-desktop absolute inset-0 w-full h-full object-cover object-[center] opacity-0 transition-opacity duration-1000 ease-in-out">
     <img src="banner5.png" alt="بانر 3"
@@ -219,6 +219,37 @@
       </ul>
     </div>
   </section>
+
+  <!-- App Showcase Section -->
+<section class="py-16 px-4 md:px-12 bg-[#FCFAF6]">
+  <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+    
+    <!-- الصورة -->
+    <div class="flex justify-center">
+      <img src="app-showcase.png" alt="واجهة التطبيق"
+           class="rounded-xl  max-w-xs sm:max-w-sm md:max-w-md">
+    </div>
+
+    <!-- النص -->
+    <div class="text-center md:text-right">
+      <h3 class="text-2xl sm:text-3xl font-bold text-[#D4AF37] mb-4 animate-slideDown">
+        📱 تطبيق الصادقين والصادقات
+      </h3>
+      <p class="text-sm sm:text-base md:text-lg text-[#2E2E2E] leading-relaxed animate-slideUp delay-200">
+        وفرنالك بيئة آمنة ومحترمة تساعدك في البحث عن شريك حياتك بكل خصوصية وسهولة.  
+        <br>
+        التطبيق بيوفر واجهة بسيطة وسهلة الاستخدام علشان تركز على هدفك الحقيقي — الزواج الإسلامي الشرعي.
+      </p>
+      <ul class="mt-6 space-y-2 text-sm sm:text-base text-gray-700 animate-fadeIn delay-300">
+        <li>✅ تصميم مريح وسهل الاستخدام.</li>
+        <li>✅ إمكانية البحث والتواصل بطرق آمنة.</li>
+        <li>✅ دعم متواصل لتجربة أفضل.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- End App Showcase Section -->
+
 
   <!-- FAQ Section -->
   <section id="faq" class="bg-[#f8f4ea] py-16 px-4 md:px-6 animate-fadeIn">
