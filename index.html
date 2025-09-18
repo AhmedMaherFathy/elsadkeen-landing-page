@@ -91,31 +91,30 @@
 
 <!-- finish header -->
 
- <!-- Hero Section -->
-<section class="relative w-full overflow-hidden h-[60vh] sm:h-[calc(100vh-64px)]">
-  <!-- Carousel Wrapper -->
-  <div class="absolute inset-0" id="carousel">
-    
-    <!-- Slide 1 -->
-    <img src="banner3.png" 
-         alt="بانر 1" 
-         class="carousel-slide absolute inset-0 w-full h-full object-cover object-[center_top] opacity-0 transition-opacity duration-1000 ease-in-out">
-
-    <!-- Slide 2 -->
-    <img src="banner4.png" 
-         alt="بانر 2" 
-         class="carousel-slide absolute inset-0 w-full h-full object-cover object-[center] opacity-0 transition-opacity duration-1000 ease-in-out">
-
-    <!-- Slide 3 -->
-    <img src="banner5.png" 
-         alt="بانر 3" 
-         class="carousel-slide absolute inset-0 w-full h-full object-cover object-[center_bottom] opacity-0 transition-opacity duration-1000 ease-in-out">
-
+<section class="relative w-full h-auto sm:overflow-hidden sm:h-[calc(100vh-64px)]">
+  <!-- Desktop carousel (absolute, visible >= sm) -->
+  <div id="carousel-desktop" class="hidden sm:block absolute inset-0">
+    <img src="banner3.png" alt="بانر 1"
+         class="carousel-slide-desktop absolute inset-0 w-full h-full object-cover object-[center_top] opacity-0 transition-opacity duration-1000 ease-in-out">
+    <img src="banner4.png" alt="بانر 2"
+         class="carousel-slide-desktop absolute inset-0 w-full h-full object-cover object-[center] opacity-0 transition-opacity duration-1000 ease-in-out">
+    <img src="banner5.png" alt="بانر 3"
+         class="carousel-slide-desktop absolute inset-0 w-full h-full object-cover object-[center_bottom] opacity-0 transition-opacity duration-1000 ease-in-out">
   </div>
 
-  <!-- Overlay & Content -->
-  <div class="relative z-10 flex flex-col md:flex-row-reverse justify-center items-center h-full px-4 md:px-12 bg-black/40">
-    <div class="w-full md:w-1/2 text-center md:text-right animate-slideRight text-white">
+  <!-- Mobile carousel (stacked, visible < sm) -->
+  <div id="carousel-mobile" class="block sm:hidden">
+    <img src="banner3.png" alt="بانر 1"
+         class="carousel-slide-mobile w-full h-auto object-contain transition-all duration-700 ease-in-out">
+    <img src="banner4.png" alt="بانر 2"
+         class="carousel-slide-mobile w-full h-auto object-contain transition-all duration-700 ease-in-out">
+    <img src="banner5.png" alt="بانر 3"
+         class="carousel-slide-mobile w-full h-auto object-contain transition-all duration-700 ease-in-out">
+  </div>
+
+  <!-- Overlay & Content (يبقى فوق الصور دائماً) -->
+  <div class="absolute inset-0 z-10 flex flex-col md:flex-row-reverse justify-center items-center px-4 md:px-12 bg-black/40">
+    <div class="w-full md:w-1/2 text-center md:text-right text-white">
       <h1 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-4">💍 مرحباً بك في الصادقين والصادقات</h1>
       <p class="text-sm sm:text-lg md:text-xl font-normal max-w-xl mx-auto md:mx-0">
         للباحثين عن الزواج الإسلامي الشرعي. سجل مجانًا وابدأ رحلتك لبناء أسرة مستقرة وآمنة.
@@ -123,6 +122,7 @@
     </div>
   </div>
 </section>
+<!-- ======= end Hero ======= -->
 
 
   <!-- App Section -->
@@ -191,8 +191,8 @@
           <li>بمجرد فتح الخدمات للمشترك فإنه يُعتبر قد استفاد من الخدمة، وبالتالي لا يحق المطالبة بإلغاء أو استرجاع الرسوم.</li>
         </ul>
       </div>
-      <h4 class="text-xl font-bold text-[#2E2E2E] mt-10">ثالثاً: ضوابط الاستخدام</h4>
-      <ul class="list-decimal list-inside space-y-3 mt-4">
+      <h4 class="font-bold mb-2">ثالثاً: ضوابط الاستخدام</h4>
+      <ul class="list-disc pr-6 space-y-2">
         <li>يلتزم المشترك باستخدام التطبيق لغرضه السامي فقط وهو الزواج الإسلامي الشرعي.</li>
         <li>أي استخدام مخالف (مثل العبث، الإساءة، أو أغراض غير شرعية او أعلانات تسويقية ) يؤدي إلى إلغاء الاشتراك مباشرةً دون استرداد الرسوم.</li>
         <li>يحتفظ التطبيق بالحق في إيقاف أو إلغاء أي حساب يخالف هذه الضوابط، حفاظاً على القيم الإسلامية والهدف الشرعي للتطبيق.</li>
@@ -254,6 +254,36 @@
 
   <!-- Carousel Script -->
 <script>
+
+  (function(){
+    const desktopSlides = document.querySelectorAll("#carousel-desktop .carousel-slide-desktop");
+    if (!desktopSlides.length) return;
+    let curD = 0;
+    // init
+    desktopSlides.forEach((s,i)=> s.style.opacity = (i===0 ? "1" : "0"));
+    setInterval(()=> {
+      desktopSlides[curD].style.opacity = "0";
+      curD = (curD+1) % desktopSlides.length;
+      desktopSlides[curD].style.opacity = "1";
+    }, 4000);
+  })();
+
+  // Mobile carousel (show/hide using display to avoid empty black bands) - visible <640px
+  (function(){
+    const mobileSlides = document.querySelectorAll("#carousel-mobile .carousel-slide-mobile");
+    if (!mobileSlides.length) return;
+    let curM = 0;
+    // show first, hide others
+    mobileSlides.forEach((s,i)=> s.style.display = (i===0 ? "block" : "none"));
+    setInterval(()=> {
+      mobileSlides[curM].style.display = "none";
+      curM = (curM+1) % mobileSlides.length;
+      mobileSlides[curM].style.display = "block";
+      // optional: scroll to top of hero on mobile when slide changes (uncomment if wanted)
+      // window.scrollTo({ top: document.querySelector('section.relative').offsetTop, behavior: 'smooth' });
+    }, 4000);
+  })();
+  // ///////////////////////////
   const slides = document.querySelectorAll(".carousel-slide");
   let currentSlide = 0;
 
