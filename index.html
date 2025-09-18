@@ -49,13 +49,21 @@
       50% { transform: scale(1.1); }
       100% { transform: scale(1); }
     }
+
+    header {
+    transition: transform 0.4s ease, opacity 0.4s ease;
+  }
+  .hidden-header {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
   </style>
 </head>
 <body class="bg-[#FCFAF6] text-[#2E2E2E]">
 
 <!-- Header -->
-<header class="grid grid-cols-3 items-center px-4 py-3 shadow-md sticky top-0 bg-white z-50 animate-slideDown">
-  <!-- أيقونة الهامبورجر على الشمال -->
+<header class="grid grid-cols-3 items-center px-4 py-3 shadow-md sticky top-0 bg-white z-50 animate-slideDown 
+transition-transform duration-300">  <!-- أيقونة الهامبورجر على الشمال -->
   <div class="flex justify-start md:hidden col-start-1">
     <button id="menu-toggle" class="focus:outline-none">
       <svg class="w-8 h-8 text-[#2E2E2E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -91,35 +99,17 @@
 
 <!-- finish header -->
 
-<section class="relative w-full h-auto sm:overflow-hidden sm:h-[calc(100vh-64px)]">
-  <!-- Desktop carousel (absolute, visible >= sm) -->
-  <div id="carousel-desktop" class="hidden sm:block absolute inset-0">
-  <img src="banner3.png" alt="بانر 1"
-       class="carousel-slide-desktop absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 ease-in-out">
-  <img src="banner4.png" alt="بانر 2"
-       class="carousel-slide-desktop absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 ease-in-out">
-  <img src="banner5.png" alt="بانر 3"
-       class="carousel-slide-desktop absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 ease-in-out">
-</div>
-
-  <!-- Mobile carousel (stacked, visible < sm) -->
-  <div id="carousel-mobile" class="block sm:hidden">
+<section class="relative w-full">
+  <div id="hero-slider" class="w-full overflow-hidden bg-[#FCFAF6]">
+    <!-- Slide 1 -->
     <img src="banner3.png" alt="بانر 1"
-         class="carousel-slide-mobile w-full h-auto object-contain transition-all duration-700 ease-in-out">
+         class="hero-slide w-full h-auto mx-auto">
+    <!-- Slide 2 -->
     <img src="banner4.png" alt="بانر 2"
-         class="carousel-slide-mobile w-full h-auto object-contain transition-all duration-700 ease-in-out">
+         class="hero-slide w-full h-auto mx-auto hidden">
+    <!-- Slide 3 -->
     <img src="banner5.png" alt="بانر 3"
-         class="carousel-slide-mobile w-full h-auto object-contain transition-all duration-700 ease-in-out">
-  </div>
-
-  <!-- Overlay & Content (يبقى فوق الصور دائماً) -->
-  <div class="absolute inset-0 z-10 flex flex-col md:flex-row-reverse justify-center items-center px-4 md:px-12 bg-black/40">
-    <!-- <div class="w-full md:w-1/2 text-center md:text-right text-white">
-      <h1 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-4">💍 مرحباً بك في الصادقين والصادقات</h1>
-      <p class="text-sm sm:text-lg md:text-xl font-normal max-w-xl mx-auto md:mx-0">
-        للباحثين عن الزواج الإسلامي الشرعي. سجل مجانًا وابدأ رحلتك لبناء أسرة مستقرة وآمنة.
-      </p>
-    </div> -->
+         class="hero-slide w-full h-auto mx-auto hidden">
   </div>
 </section>
 <!-- ======= end Hero ======= -->
@@ -148,16 +138,38 @@
 
   <!-- Features Section -->
   <section id="features" class="py-16 px-4 md:px-6">
-    <h3 class="text-xl sm:text-2xl font-bold text-center text-[#D4AF37] mb-10 animate-slideUp">✨ مميزات التطبيق</h3>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 text-center">
-      <div class="p-4 sm:p-6 bg-white rounded-xl shadow animate-fadeIn delay-100">✅ التسجيل مجاني تماماً</div>
-      <div class="p-4 sm:p-6 bg-white rounded-xl shadow animate-fadeIn delay-200">🔐 خصوصية وأمان عالي</div>
-      <div class="p-4 sm:p-6 bg-white rounded-xl shadow animate-fadeIn delay-300">🛡️ حسابات موثقة</div>
-      <div class="p-4 sm:p-6 bg-white rounded-xl shadow animate-fadeIn delay-400">📄 فلاتر بحث دقيقة</div>
-      <div class="p-4 sm:p-6 bg-white rounded-xl shadow animate-fadeIn delay-500">💬 تواصل شرعي ومحترم</div>
-      <div class="p-4 sm:p-6 bg-white rounded-xl shadow animate-fadeIn delay-500">🕊️ بيئة نظيفة خالية من العبث</div>
+  <h3 class="text-xl sm:text-2xl font-bold text-center text-[#D4AF37] mb-10 animate-slideUp">
+    ✨ مميزات التطبيق
+  </h3>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 text-center">
+    
+    <div class="p-6 bg-white rounded-xl shadow transition transform hover:scale-105 hover:shadow-lg hover:bg-[#FFF8E7]">
+      ✅ التسجيل مجاني تماماً
     </div>
-  </section>
+    
+    <div class="p-6 bg-white rounded-xl shadow transition transform hover:scale-105 hover:shadow-lg hover:bg-[#FFF8E7]">
+      🔐 خصوصية وأمان عالي
+    </div>
+    
+    <div class="p-6 bg-white rounded-xl shadow transition transform hover:scale-105 hover:shadow-lg hover:bg-[#FFF8E7]">
+      🛡️ حسابات موثقة
+    </div>
+    
+    <div class="p-6 bg-white rounded-xl shadow transition transform hover:scale-105 hover:shadow-lg hover:bg-[#FFF8E7]">
+      📄 فلاتر بحث دقيقة
+    </div>
+    
+    <div class="p-6 bg-white rounded-xl shadow transition transform hover:scale-105 hover:shadow-lg hover:bg-[#FFF8E7]">
+      💬 تواصل شرعي ومحترم
+    </div>
+    
+    <div class="p-6 bg-white rounded-xl shadow transition transform hover:scale-105 hover:shadow-lg hover:bg-[#FFF8E7]">
+      🕊️ بيئة نظيفة خالية من العبث
+    </div>
+    
+  </div>
+</section>
+
 
   <!-- How it works -->
   <section id="how" class="bg-[#f8f4ea] py-16 px-4 md:px-6">
@@ -173,22 +185,22 @@
   </section>
 
   <!-- ======= Mockup Section (Full width like Hero) ======= -->
-  <section class="relative w-full h-auto sm:overflow-hidden sm:h-[80vh]">
-    <!-- Desktop Image -->
-    <div class="hidden sm:block absolute inset-0">
-      <img src="mockap.png" alt="موكاب التطبيق"
-          class="absolute inset-0 w-full h-full object-cover opacity-100">
-    </div>
+ <section class="relative w-full h-auto sm:overflow-hidden sm:h-auto">
+  <!-- Desktop Image -->
+  <div class="hidden sm:block">
+    <img src="mockap.png" alt="موكاب التطبيق"
+         class="w-full h-auto object-contain mx-auto">
+  </div>
 
-    <!-- Mobile Image -->
-    <div class="block sm:hidden">
-      <img src="mockap.png" alt="موكاب التطبيق"
-          class="w-full h-auto object-contain">
-    </div>
+  <!-- Mobile Image -->
+  <div class="block sm:hidden">
+    <img src="mockap.png" alt="موكاب التطبيق"
+         class="w-full h-auto object-contain mx-auto">
+  </div>
 
-    <!-- Overlay (شفاف علشان الشكل يفضل زي الهيرو) -->
-    <!-- <div class="absolute inset-0 bg-black/30"></div> -->
-  </section>
+  <!-- Overlay (اختياري) -->
+  <!-- <div class="absolute inset-0 bg-black/30"></div> -->
+</section>
   <!-- ======= End Mockup Section ======= -->
 
   
@@ -307,52 +319,67 @@
   <!-- Carousel Script -->
 <script>
 
-  (function(){
-    const desktopSlides = document.querySelectorAll("#carousel-desktop .carousel-slide-desktop");
-    if (!desktopSlides.length) return;
-    let curD = 0;
-    // init
-    desktopSlides.forEach((s,i)=> s.style.opacity = (i===0 ? "1" : "0"));
-    setInterval(()=> {
-      desktopSlides[curD].style.opacity = "0";
-      curD = (curD+1) % desktopSlides.length;
-      desktopSlides[curD].style.opacity = "1";
+(function () {
+    const slides = document.querySelectorAll('#hero-slider .hero-slide');
+    if (!slides.length) return;
+    let current = 0;
+
+    // إظهار أول صورة
+    slides.forEach((s, i) => s.classList.toggle("hidden", i !== 0));
+
+    // تغيير تلقائي
+    setInterval(() => {
+      slides[current].classList.add("hidden");
+      current = (current + 1) % slides.length;
+      slides[current].classList.remove("hidden");
     }, 4000);
   })();
+  // (function(){
+  //   const desktopSlides = document.querySelectorAll("#carousel-desktop .carousel-slide-desktop");
+  //   if (!desktopSlides.length) return;
+  //   let curD = 0;
+  //   // init
+  //   desktopSlides.forEach((s,i)=> s.style.opacity = (i===0 ? "1" : "0"));
+  //   setInterval(()=> {
+  //     desktopSlides[curD].style.opacity = "0";
+  //     curD = (curD+1) % desktopSlides.length;
+  //     desktopSlides[curD].style.opacity = "1";
+  //   }, 4000);
+  // })();
 
-  // Mobile carousel (show/hide using display to avoid empty black bands) - visible <640px
-  (function(){
-    const mobileSlides = document.querySelectorAll("#carousel-mobile .carousel-slide-mobile");
-    if (!mobileSlides.length) return;
-    let curM = 0;
-    // show first, hide others
-    mobileSlides.forEach((s,i)=> s.style.display = (i===0 ? "block" : "none"));
-    setInterval(()=> {
-      mobileSlides[curM].style.display = "none";
-      curM = (curM+1) % mobileSlides.length;
-      mobileSlides[curM].style.display = "block";
-      // optional: scroll to top of hero on mobile when slide changes (uncomment if wanted)
-      // window.scrollTo({ top: document.querySelector('section.relative').offsetTop, behavior: 'smooth' });
-    }, 4000);
-  })();
-  // ///////////////////////////
-  const slides = document.querySelectorAll(".carousel-slide");
-  let currentSlide = 0;
+  // // Mobile carousel (show/hide using display to avoid empty black bands) - visible <640px
+  // (function(){
+  //   const mobileSlides = document.querySelectorAll("#carousel-mobile .carousel-slide-mobile");
+  //   if (!mobileSlides.length) return;
+  //   let curM = 0;
+  //   // show first, hide others
+  //   mobileSlides.forEach((s,i)=> s.style.display = (i===0 ? "block" : "none"));
+  //   setInterval(()=> {
+  //     mobileSlides[curM].style.display = "none";
+  //     curM = (curM+1) % mobileSlides.length;
+  //     mobileSlides[curM].style.display = "block";
+  //     // optional: scroll to top of hero on mobile when slide changes (uncomment if wanted)
+  //     // window.scrollTo({ top: document.querySelector('section.relative').offsetTop, behavior: 'smooth' });
+  //   }, 4000);
+  // })();
+  // // ///////////////////////////
+  // const slides = document.querySelectorAll(".carousel-slide");
+  // let currentSlide = 0;
 
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.style.opacity = (i === index) ? "1" : "0";
-    });
-  }
+  // function showSlide(index) {
+  //   slides.forEach((slide, i) => {
+  //     slide.style.opacity = (i === index) ? "1" : "0";
+  //   });
+  // }
 
-  function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-  }
+  // function nextSlide() {
+  //   currentSlide = (currentSlide + 1) % slides.length;
+  //   showSlide(currentSlide);
+  // }
 
-  // Start carousel
-  showSlide(currentSlide);
-  setInterval(nextSlide, 4000); // كل 4 ثواني يبدل صورة
+  // // Start carousel
+  // showSlide(currentSlide);
+  // setInterval(nextSlide, 4000); // كل 4 ثواني يبدل صورة
 
   const menuToggle = document.getElementById("menu-toggle");
   const navMenu = document.getElementById("nav-menu");
@@ -367,6 +394,26 @@
   navLinks.forEach(link => {
     link.addEventListener("click", () => {
       navMenu.classList.add("hidden");
+    });
+  });
+
+  // header removed
+  document.addEventListener("DOMContentLoaded", () => {
+    let lastScroll = 0;
+    const header = document.querySelector("header");
+
+    window.addEventListener("scroll", () => {
+      const currentScroll = window.pageYOffset;
+
+      if (currentScroll > lastScroll && currentScroll > 50) {
+        // سكرول لتحت → اخفي الهيدر
+        header.classList.add("-translate-y-full");
+      } else {
+        // سكرول لفوق → ارجع الهيدر
+        header.classList.remove("-translate-y-full");
+      }
+
+      lastScroll = currentScroll;
     });
   });
 </script>
